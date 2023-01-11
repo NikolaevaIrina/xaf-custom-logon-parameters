@@ -11,6 +11,8 @@ using DevExpress.EntityFrameworkCore.Security;
 using DevExpress.XtraEditors;
 using DevExpress.Persistent.BaseImpl.EF.PermissionPolicy;
 using DevExpress.ExpressApp.Design;
+using EFCoreCustomLogonAll.Module.BusinessObjects;
+using EFCustomLogon.Module.BusinessObjects;
 
 namespace EFCoreCustomLogonAll.Win;
 
@@ -41,6 +43,13 @@ public class ApplicationBuilder : IDesignTimeApplicationFactory {
                 options.RoleType = typeof(PermissionPolicyRole);
                 options.UserType = typeof(EFCoreCustomLogonAll.Module.BusinessObjects.ApplicationUser);
                 options.UserLoginInfoType = typeof(EFCoreCustomLogonAll.Module.BusinessObjects.ApplicationUserLoginInfo);
+                options.Events.OnSecurityStrategyCreated = securityStrategyBase => {
+                    // ...
+                    var securityStrategy = (SecurityStrategy)securityStrategyBase;
+                    securityStrategy.Authentication = new CustomAuthentication();
+                    securityStrategy.AnonymousAllowedTypes.Add(typeof(Company));
+                    securityStrategy.AnonymousAllowedTypes.Add(typeof(ApplicationUser));
+                };
             })
             .UsePasswordAuthentication();
         builder.AddBuildStep(application => {
