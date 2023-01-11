@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using EFCoreCustomLogonAll.Blazor.Server.Services;
 using DevExpress.Persistent.BaseImpl.EF.PermissionPolicy;
 using DevExpress.ExpressApp.Core;
+using EFCustomLogon.Module.BusinessObjects;
 
 namespace EFCoreCustomLogonAll.Blazor.Server;
 
@@ -69,9 +70,13 @@ public class Startup {
                     // If you use PermissionPolicyUser or a custom user type, comment out the following line:
                     options.UserLoginInfoType = typeof(EFCoreCustomLogonAll.Module.BusinessObjects.ApplicationUserLoginInfo);
                 })
-                .AddPasswordAuthentication(options => {
-                    options.IsSupportChangePassword = true;
-                });
+                  .AddAuthenticationProvider<AuthenticationStandardProviderOptions, CustomAuthenticationStandardProvider>(options => {
+                      options.IsSupportChangePassword = true;
+                      options.LogonParametersType = typeof(CustomLogonParameters);
+                  });
+            //.AddPasswordAuthentication(options => {
+            //    options.IsSupportChangePassword = true;
+            //});
         });
         services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options => {
             options.LoginPath = "/LoginPage";
