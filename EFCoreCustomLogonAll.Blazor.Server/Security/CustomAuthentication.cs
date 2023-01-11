@@ -1,6 +1,7 @@
 ﻿using DevExpress.ExpressApp.Security;
 using DevExpress.ExpressApp;
 using DevExpress.Persistent.Base.Security;
+using EFCoreCustomLogonAll.Module.BusinessObjects;
 
 namespace EFCustomLogon.Module.BusinessObjects;
 

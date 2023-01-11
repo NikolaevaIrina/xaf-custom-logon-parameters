@@ -3,7 +3,7 @@ using DevExpress.ExpressApp;
 using System.ComponentModel;
 using System.Runtime.Serialization;
 using DevExpress.Persistent.Base;
-using EFCustomLogonWin.Module.BusinessObjects;
+using EFCoreCustomLogonAll.Module.BusinessObjects;
 
 namespace EFCustomLogon.Module.BusinessObjects;
 
