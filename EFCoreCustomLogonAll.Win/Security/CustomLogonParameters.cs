@@ -9,7 +9,7 @@ namespace EFCustomLogon.Module.BusinessObjects;
 
 [DomainComponent, Serializable]
 [System.ComponentModel.DisplayName("Log In")]
-public class CustomLogonParameters : INotifyPropertyChanged, ISerializable {
+public class CustomLogonParameters : INotifyPropertyChanged {
     private Company company;
     private ApplicationUser _applicationUser;
     private string password;
@@ -47,25 +47,14 @@ public class CustomLogonParameters : INotifyPropertyChanged, ISerializable {
             password = value;
         }
     }
-    public CustomLogonParameters() { }
-    // ISerializable 
-    public CustomLogonParameters(SerializationInfo info, StreamingContext context) {
-        if(info.MemberCount > 0) {
-            UserName = info.GetString("UserName");
-            Password = info.GetString("Password");
-        }
-    }
+
     private void OnPropertyChanged(string propertyName) {
         if(PropertyChanged != null) {
             PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
     }
     public event PropertyChangedEventHandler PropertyChanged;
-    [System.Security.SecurityCritical]
-    public void GetObjectData(SerializationInfo info, StreamingContext context) {
-        info.AddValue("UserName", UserName);
-        info.AddValue("Password", Password);
-    }
+
     public void RefreshPersistentObjects(IObjectSpace objectSpace) {
         ApplicationUser = (UserName == null) ? null : objectSpace.FirstOrDefault<ApplicationUser>(e => e.UserName == UserName);
     }
