@@ -1,15 +1,13 @@
-﻿using DevExpress.ExpressApp.Core;
+﻿using DevExpress.ExpressApp;
+using DevExpress.ExpressApp.Core;
 using DevExpress.ExpressApp.DC;
-using DevExpress.ExpressApp;
+using DevExpress.Persistent.Base;
+using EFCoreCustomLogonAll.Module.BusinessObjects;
 using System.ComponentModel;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
-using DevExpress.Persistent.Base;
-using Microsoft.Extensions.DependencyInjection;
-using EFCoreCustomLogonAll.Module.BusinessObjects;
 
 namespace EFCustomLogon.Module.BusinessObjects;
-
 [DomainComponent, Serializable]
 [DisplayName("Log In")]
 public class CustomLogonParameters : INotifyPropertyChanged, ISerializable, IDisposable, IServiceProviderConsumer {
@@ -49,10 +47,8 @@ public class CustomLogonParameters : INotifyPropertyChanged, ISerializable, IDis
         List<Company> companies = new List<Company>();
         INonSecuredObjectSpaceFactory nonSecuredObjectSpaceFactory = serviceProvider!.GetRequiredService<INonSecuredObjectSpaceFactory>();
         var os = nonSecuredObjectSpaceFactory.CreateNonSecuredObjectSpace<Company>();
-
         objToDispose.Add(os);
         companies.AddRange(os.GetObjects<Company>());
-
         return companies.AsReadOnly();
     }
     void IDisposable.Dispose() {

@@ -37,7 +37,7 @@ public class Startup {
                     options.AllowValidationDetailsAccess = false;
                 })
                 .Add<EFCoreCustomLogonAll.Module.EFCoreCustomLogonAllModule>()
-            	.Add<EFCoreCustomLogonAllBlazorModule>();
+                .Add<EFCoreCustomLogonAllBlazorModule>();
             builder.ObjectSpaceProviders
                 .AddSecuredEFCore().WithDbContext<EFCoreCustomLogonAll.Module.BusinessObjects.EFCoreCustomLogonAllEFCoreDbContext>((serviceProvider, options) => {
                     // Uncomment this code to use an in-memory database. This database is recreated each time the server starts. With the in-memory database, you don't need to make a migration when the data model is changed.
@@ -87,8 +87,7 @@ public class Startup {
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
         if(env.IsDevelopment()) {
             app.UseDeveloperExceptionPage();
-        }
-        else {
+        } else {
             app.UseExceptionHandler("/Error");
             // The default HSTS value is 30 days. To change this for production scenarios, see: https://aka.ms/aspnetcore-hsts.
             app.UseHsts();
