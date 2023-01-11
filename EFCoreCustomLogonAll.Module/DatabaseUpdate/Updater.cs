@@ -8,6 +8,7 @@ using DevExpress.ExpressApp.EF;
 using DevExpress.Persistent.BaseImpl.EF;
 using DevExpress.Persistent.BaseImpl.EF.PermissionPolicy;
 using EFCoreCustomLogonAll.Module.BusinessObjects;
+using EFCustomLogon.Module.BusinessObjects;
 
 namespace EFCoreCustomLogonAll.Module.DatabaseUpdate;
 
@@ -60,6 +61,23 @@ public class Updater : ModuleUpdater {
         }
         adminRole.IsAdministrative = true;
 		userAdmin.Roles.Add(adminRole);
+        if(ObjectSpace.FindObject<Company>(null) == null) {
+            Company company1 = ObjectSpace.CreateObject<Company>();
+            company1.Name = "Company 1";
+            company1.ApplicationUsers.Add(userAdmin);
+            ApplicationUser user1 = ObjectSpace.CreateObject<ApplicationUser>();
+            user1.UserName = "Sam";
+            user1.SetPassword("");
+            user1.Roles.Add(defaultRole);
+            ApplicationUser user2 = ObjectSpace.CreateObject<ApplicationUser>();
+            user2.UserName = "John";
+            user2.SetPassword("");
+            user2.Roles.Add(defaultRole);
+            Company company2 = ObjectSpace.CreateObject<Company>();
+            company2.Name = "Company 2";
+            company2.ApplicationUsers.Add(user1);
+            company2.ApplicationUsers.Add(user2);
+        }
         ObjectSpace.CommitChanges(); //This line persists created object(s).
 #endif
     }
