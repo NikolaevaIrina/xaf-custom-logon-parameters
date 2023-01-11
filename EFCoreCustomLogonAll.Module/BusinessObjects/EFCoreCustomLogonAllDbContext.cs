@@ -5,6 +5,7 @@ using DevExpress.Persistent.BaseImpl.EF.PermissionPolicy;
 using DevExpress.Persistent.BaseImpl.EF;
 using DevExpress.ExpressApp.Design;
 using DevExpress.ExpressApp.EFCore.DesignTime;
+using EFCustomLogon.Module.BusinessObjects;
 
 namespace EFCoreCustomLogonAll.Module.BusinessObjects;
 
@@ -40,6 +41,7 @@ public class EFCoreCustomLogonAllEFCoreDbContext : DbContext {
 	public DbSet<PermissionPolicyRole> Roles { get; set; }
 	public DbSet<EFCoreCustomLogonAll.Module.BusinessObjects.ApplicationUser> Users { get; set; }
     public DbSet<EFCoreCustomLogonAll.Module.BusinessObjects.ApplicationUserLoginInfo> UserLoginInfos { get; set; }
+    public DbSet<Company> Companies { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
         base.OnModelCreating(modelBuilder);
