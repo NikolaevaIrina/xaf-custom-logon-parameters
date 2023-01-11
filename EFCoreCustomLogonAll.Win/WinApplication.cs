@@ -12,6 +12,7 @@ using DevExpress.EntityFrameworkCore.Security;
 using EFCoreCustomLogonAll.Module;
 using EFCoreCustomLogonAll.Module.BusinessObjects;
 using System.Data.Common;
+using EFCustomLogon.Module.BusinessObjects;
 
 namespace EFCoreCustomLogonAll.Win;
 
@@ -24,6 +25,21 @@ public class EFCoreCustomLogonAllWindowsFormsApplication : WinApplication {
         UseOldTemplates = false;
         DatabaseVersionMismatch += EFCoreCustomLogonAllWindowsFormsApplication_DatabaseVersionMismatch;
         CustomizeLanguagesList += EFCoreCustomLogonAllWindowsFormsApplication_CustomizeLanguagesList;
+        this.CreateCustomLogonWindowObjectSpace += application_CreateCustomLogonWindowObjectSpace;
+    }
+    private void application_CreateCustomLogonWindowObjectSpace(object sender, CreateCustomLogonWindowObjectSpaceEventArgs e) {
+        e.ObjectSpace = CreateObjectSpace(typeof(CustomLogonParameters));
+        NonPersistentObjectSpace nonPersistentObjectSpace = e.ObjectSpace as NonPersistentObjectSpace;
+        if(nonPersistentObjectSpace != null) {
+            if(!nonPersistentObjectSpace.IsKnownType(typeof(Company), true)) {
+                IObjectSpace additionalObjectSpace = CreateObjectSpace(typeof(Company));
+                nonPersistentObjectSpace.AdditionalObjectSpaces.Add(additionalObjectSpace);
+                nonPersistentObjectSpace.Disposed += (s2, e2) => {
+                    additionalObjectSpace.Dispose();
+                };
+            }
+        }
+    ((CustomLogonParameters)e.LogonParameters).RefreshPersistentObjects(e.ObjectSpace);
     }
     private void EFCoreCustomLogonAllWindowsFormsApplication_CustomizeLanguagesList(object sender, CustomizeLanguagesListEventArgs e) {
         string userLanguageName = System.Threading.Thread.CurrentThread.CurrentUICulture.Name;
