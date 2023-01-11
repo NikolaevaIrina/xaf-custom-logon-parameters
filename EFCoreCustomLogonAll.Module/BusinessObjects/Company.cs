@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl.EF;
+using EFCoreCustomLogonAll.Module.BusinessObjects;
 
 namespace EFCustomLogon.Module.BusinessObjects;
 
