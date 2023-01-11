@@ -8,7 +8,6 @@ using DevExpress.ExpressApp.EF;
 using DevExpress.Persistent.BaseImpl.EF;
 using DevExpress.Persistent.BaseImpl.EF.PermissionPolicy;
 using EFCoreCustomLogonAll.Module.BusinessObjects;
-using EFCustomLogon.Module.BusinessObjects;
 
 namespace EFCoreCustomLogonAll.Module.DatabaseUpdate;
 

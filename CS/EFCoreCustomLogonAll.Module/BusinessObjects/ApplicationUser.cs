@@ -3,7 +3,6 @@ using System.ComponentModel;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Security;
 using DevExpress.Persistent.BaseImpl.EF.PermissionPolicy;
-using EFCustomLogon.Module.BusinessObjects;
 
 namespace EFCoreCustomLogonAll.Module.BusinessObjects;
 

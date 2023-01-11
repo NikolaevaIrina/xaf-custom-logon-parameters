@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using DevExpress.Persistent.Base;
 using EFCoreCustomLogonAll.Module.BusinessObjects;
 
-namespace EFCustomLogon.Module.BusinessObjects;
+namespace EFCoreCustomLogonAll.Module.BusinessObjects;
 
 [DomainComponent, Serializable]
 [System.ComponentModel.DisplayName("Log In")]

@@ -2,7 +2,7 @@
 using DevExpress.Persistent.BaseImpl.EF;
 using EFCoreCustomLogonAll.Module.BusinessObjects;
 using System.Collections.ObjectModel;
-namespace EFCustomLogon.Module.BusinessObjects;
+namespace EFCoreCustomLogonAll.Module.BusinessObjects;
 [DefaultClassOptions]
 public class Company : BaseObject {
     public virtual string Name { get; set; }

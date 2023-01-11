@@ -12,7 +12,6 @@ using DevExpress.XtraEditors;
 using DevExpress.Persistent.BaseImpl.EF.PermissionPolicy;
 using DevExpress.ExpressApp.Design;
 using EFCoreCustomLogonAll.Module.BusinessObjects;
-using EFCustomLogon.Module.BusinessObjects;
 
 namespace EFCoreCustomLogonAll.Win;
 

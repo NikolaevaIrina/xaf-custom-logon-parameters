@@ -12,7 +12,6 @@ using DevExpress.EntityFrameworkCore.Security;
 using EFCoreCustomLogonAll.Module;
 using EFCoreCustomLogonAll.Module.BusinessObjects;
 using System.Data.Common;
-using EFCustomLogon.Module.BusinessObjects;
 
 namespace EFCoreCustomLogonAll.Win;
 
