@@ -3,6 +3,7 @@ using System.ComponentModel;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Security;
 using DevExpress.Persistent.BaseImpl.EF.PermissionPolicy;
+using EFCustomLogon.Module.BusinessObjects;
 
 namespace EFCoreCustomLogonAll.Module.BusinessObjects;
 
@@ -25,4 +26,5 @@ public class ApplicationUser : PermissionPolicyUser, ISecurityUserWithLoginInfo 
         result.User = this;
         return result;
     }
+    public virtual Company Company { get; set; }
 }
