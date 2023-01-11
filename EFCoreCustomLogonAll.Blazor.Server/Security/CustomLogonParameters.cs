@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 using DevExpress.Persistent.Base;
 using Microsoft.Extensions.DependencyInjection;
+using EFCoreCustomLogonAll.Module.BusinessObjects;
 
 namespace EFCustomLogon.Module.BusinessObjects;
 
