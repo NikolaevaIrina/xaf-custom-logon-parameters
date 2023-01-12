@@ -10,7 +10,7 @@ using System.Text.Json.Serialization;
 namespace EFCustomLogon.Module.BusinessObjects;
 [DomainComponent, Serializable]
 [DisplayName("Log In")]
-public class CustomLogonParameters : INotifyPropertyChanged, ISerializable, IDisposable, IServiceProviderConsumer {
+public class CustomLogonParameters : INotifyPropertyChanged, IDisposable, IServiceProviderConsumer {
     private Company company;
     private ApplicationUser applicationUser;
     private string password;
@@ -78,14 +78,8 @@ public class CustomLogonParameters : INotifyPropertyChanged, ISerializable, IDis
             password = value;
         }
     }
-    public CustomLogonParameters() { }
-    // ISerializable 
-    public CustomLogonParameters(SerializationInfo info, StreamingContext context) {
-        if(info.MemberCount > 0) {
-            UserName = info.GetString("UserName");
-            Password = info.GetString("Password");
-        }
-    }
+
+
     private void OnPropertyChanged(string propertyName) {
         if(PropertyChanged != null) {
             PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
