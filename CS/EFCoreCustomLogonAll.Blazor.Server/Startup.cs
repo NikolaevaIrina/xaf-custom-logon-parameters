@@ -8,8 +8,8 @@ using Microsoft.AspNetCore.Components.Server.Circuits;
 using Microsoft.EntityFrameworkCore;
 using EFCoreCustomLogonAll.Blazor.Server.Services;
 using DevExpress.Persistent.BaseImpl.EF.PermissionPolicy;
-using DevExpress.ExpressApp.Core;
 using EFCustomLogon.Module.BusinessObjects;
+using EFCoreCustomLogonAll.Blazor.Server.Security;
 
 namespace EFCoreCustomLogonAll.Blazor.Server;
 
@@ -112,29 +112,4 @@ public class Startup {
         app.UseDemoData();
     }
 
-}
-
-static class ApplicationBuilderExtensions {
-    //public static IApplicationBuilder CreateDB(this IApplicationBuilder app)
-    //{
-    //    using var scope = app.ApplicationServices.CreateScope();
-    //    //Update DB schema
-    //    scope.ServiceProvider.GetRequiredService<IObjectSpaceProviderFactory>()
-    //        .CreateObjectSpaceProviders().ToList().ForEach(p => {
-    //            if (!(p is DevExpress.ExpressApp.NonPersistentObjectSpaceProvider))
-    //            {
-    //                p.UpdateSchema();
-    //            }
-    //        });
-    //    return app;
-    //}
-    public static IApplicationBuilder UseDemoData(this IApplicationBuilder app) {
-        using var scope = app.ApplicationServices.CreateScope();
-
-        var updatingObjectSpaceFactory = scope.ServiceProvider.GetRequiredService<IUpdatingObjectSpaceFactory>();
-        using var objectSpace = updatingObjectSpaceFactory.CreateUpdatingObjectSpace(typeof(EFCoreCustomLogonAll.Module.BusinessObjects.ApplicationUser), true);
-        new EFCoreCustomLogonAll.Module.DatabaseUpdate.Updater(objectSpace, new Version()).UpdateDatabaseAfterUpdateSchema();
-
-        return app;
-    }
 }
