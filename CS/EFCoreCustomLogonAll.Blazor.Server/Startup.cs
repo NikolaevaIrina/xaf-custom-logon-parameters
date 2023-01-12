@@ -95,6 +95,9 @@ public class Startup {
         app.UseHttpsRedirection();
         app.UseRequestLocalization();
         app.UseStaticFiles();
+
+        // app.CreateDB();
+
         app.UseRouting();
         app.UseAuthentication();
         app.UseAuthorization();
@@ -105,5 +108,33 @@ public class Startup {
             endpoints.MapFallbackToPage("/_Host");
             endpoints.MapControllers();
         });
+
+        app.UseDemoData();
+    }
+
+}
+
+static class ApplicationBuilderExtensions {
+    //public static IApplicationBuilder CreateDB(this IApplicationBuilder app)
+    //{
+    //    using var scope = app.ApplicationServices.CreateScope();
+    //    //Update DB schema
+    //    scope.ServiceProvider.GetRequiredService<IObjectSpaceProviderFactory>()
+    //        .CreateObjectSpaceProviders().ToList().ForEach(p => {
+    //            if (!(p is DevExpress.ExpressApp.NonPersistentObjectSpaceProvider))
+    //            {
+    //                p.UpdateSchema();
+    //            }
+    //        });
+    //    return app;
+    //}
+    public static IApplicationBuilder UseDemoData(this IApplicationBuilder app) {
+        using var scope = app.ApplicationServices.CreateScope();
+
+        var updatingObjectSpaceFactory = scope.ServiceProvider.GetRequiredService<IUpdatingObjectSpaceFactory>();
+        using var objectSpace = updatingObjectSpaceFactory.CreateUpdatingObjectSpace(typeof(EFCoreCustomLogonAll.Module.BusinessObjects.ApplicationUser), true);
+        new EFCoreCustomLogonAll.Module.DatabaseUpdate.Updater(objectSpace, new Version()).UpdateDatabaseAfterUpdateSchema();
+
+        return app;
     }
 }
