@@ -3,12 +3,11 @@ using DevExpress.ExpressApp.Core;
 using DevExpress.ExpressApp.DC;
 using DevExpress.Persistent.Base;
 using EFCoreCustomLogonAll.Module.BusinessObjects;
+using Newtonsoft.Json;
 using System.ComponentModel;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
 
 namespace EFCustomLogon.Module.BusinessObjects;
-[DomainComponent, Serializable]
+[DomainComponent]
 [DisplayName("Log In")]
 public class CustomLogonParameters : INotifyPropertyChanged, IDisposable, IServiceProviderConsumer {
     private Company company;
@@ -57,6 +56,7 @@ public class CustomLogonParameters : INotifyPropertyChanged, IDisposable, IServi
         }
         serviceProvider = null;
     }
+    [JsonIgnore]
     [DataSourceProperty("Company.ApplicationUsers"), ImmediatePostData]
     public ApplicationUser ApplicationUser {
         get { return applicationUser; }
@@ -86,11 +86,7 @@ public class CustomLogonParameters : INotifyPropertyChanged, IDisposable, IServi
         }
     }
     public event PropertyChangedEventHandler PropertyChanged;
-    [System.Security.SecurityCritical]
-    public void GetObjectData(SerializationInfo info, StreamingContext context) {
-        info.AddValue("UserName", UserName);
-        info.AddValue("Password", Password);
-    }
+
     public void RefreshPersistentObjects(IObjectSpace objectSpace) {
         ApplicationUser = UserName == null ? null : objectSpace.FirstOrDefault<ApplicationUser>(e => e.UserName == UserName);
     }
