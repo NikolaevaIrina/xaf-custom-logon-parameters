@@ -1,9 +1,7 @@
 ﻿using DevExpress.ExpressApp.Core;
-
 namespace EFCoreCustomLogonAll.Blazor.Server.Security;
 
-static class ApplicationBuilderExtensions
-{
+static class ApplicationBuilderExtensions {
     //public static IApplicationBuilder CreateDB(this IApplicationBuilder app)
     //{
     //    using var scope = app.ApplicationServices.CreateScope();
@@ -17,8 +15,7 @@ static class ApplicationBuilderExtensions
     //        });
     //    return app;
     //}
-    public static IApplicationBuilder UseDemoData(this IApplicationBuilder app)
-    {
+    public static IApplicationBuilder UseDemoData(this IApplicationBuilder app) {
         using var scope = app.ApplicationServices.CreateScope();
 
         var updatingObjectSpaceFactory = scope.ServiceProvider.GetRequiredService<IUpdatingObjectSpaceFactory>();
