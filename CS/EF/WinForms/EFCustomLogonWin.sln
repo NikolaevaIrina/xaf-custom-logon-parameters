@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCustomLogonWin.Module", "EFCustomLogonWin.Module\EFCustomLogonWin.Module.csproj", "{A7DE99F6-ED16-4137-BFED-8D13A2FFEA12}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCustomLogonWin.Win", "EFCustomLogonWin.Win\EFCustomLogonWin.Win.csproj", "{F71C3E66-2329-48D1-AA77-A04AB4924ED4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		EasyTest|Any CPU = EasyTest|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A7DE99F6-ED16-4137-BFED-8D13A2FFEA12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7DE99F6-ED16-4137-BFED-8D13A2FFEA12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7DE99F6-ED16-4137-BFED-8D13A2FFEA12}.EasyTest|Any CPU.ActiveCfg = EasyTest|Any CPU
+		{A7DE99F6-ED16-4137-BFED-8D13A2FFEA12}.EasyTest|Any CPU.Build.0 = EasyTest|Any CPU
+		{A7DE99F6-ED16-4137-BFED-8D13A2FFEA12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7DE99F6-ED16-4137-BFED-8D13A2FFEA12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F71C3E66-2329-48D1-AA77-A04AB4924ED4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F71C3E66-2329-48D1-AA77-A04AB4924ED4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F71C3E66-2329-48D1-AA77-A04AB4924ED4}.EasyTest|Any CPU.ActiveCfg = EasyTest|Any CPU
+		{F71C3E66-2329-48D1-AA77-A04AB4924ED4}.EasyTest|Any CPU.Build.0 = EasyTest|Any CPU
+		{F71C3E66-2329-48D1-AA77-A04AB4924ED4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F71C3E66-2329-48D1-AA77-A04AB4924ED4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CCA39699-1124-472E-A6F6-925EE4C540D5}
+	EndGlobalSection
+EndGlobal

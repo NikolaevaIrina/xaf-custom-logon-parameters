@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "CustomLogonXPOWin.Win": {
+      "commandName": "Project"
+    }
+  }
+}
