@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using System.ComponentModel;
 
 namespace EFCustomLogon.Module.BusinessObjects;
+
 [DomainComponent]
 [DisplayName("Log In")]
 public class CustomLogonParameters : INotifyPropertyChanged, IDisposable, IServiceProviderConsumer {
